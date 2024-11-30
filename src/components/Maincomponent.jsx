@@ -1,6 +1,14 @@
 import React from 'react'
 import travelImage from './travel.jpg';
 import { NavLink } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
+import { FaCarAlt } from "react-icons/fa";
+import { FaHotel } from "react-icons/fa6";
+import { TbActivity } from "react-icons/tb";
+import { FaTrainSubway } from "react-icons/fa6";
+import { FaBus } from "react-icons/fa";
+import { RiFlightTakeoffLine } from "react-icons/ri";
+import { SiMentorcruise } from "react-icons/si";
 
 function Maincomponent() {
   return (
@@ -15,6 +23,7 @@ function Maincomponent() {
           }}>
             <div className='flex justify-start items-start mb-32 mr-72 ml-0 mt-0 pt-0'>
             <header className=" mb-12 mr-72 ">
+                <div>
              <ul className="hidden md:flex space-x-8 ">
              <li>
                                 <NavLink
@@ -59,7 +68,13 @@ function Maincomponent() {
                                 </NavLink>
                                 </li>
              </ul>
+             
+             </div> 
+
+            
+           
             </header>
+        
             </div>
             
             <div className="text-center mt-6">
@@ -80,43 +95,43 @@ function Maincomponent() {
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Hotels Icon" className="w-6 h-6" />
+      <FaHotel  className="w-4 h-4" />
     </span>
     Hotels
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Cabs Icon" className="w-6 h-6" />
+    <FaCarAlt  className="w-5 h-5" />
     </span>
     Cabs
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Activities Icon" className="w-6 h-6" />
+      <TbActivity  className="w-5 h-5" />
     </span>
     Activities
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Trains Icon" className="w-6 h-6" />
+      <FaTrainSubway  className="w-4 h-5" />
     </span>
     Trains
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Buses Icon" className="w-6 h-6" />
+      <FaBus  className="w-5 h-5" />
     </span>
     Buses
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Flights Icon" className="w-6 h-6" />
+      <RiFlightTakeoffLine  className="w-5 h-5" />
     </span>
     Flights
   </button>
   <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <img src="" alt="Cruise Icon" className="w-6 h-6" />
+      <SiMentorcruise className="w-5 h-5" />
     </span>
     Cruise
   </button>
