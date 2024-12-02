@@ -1,6 +1,6 @@
 import React from 'react'
 import travelImage from './travel.jpg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { FaCarAlt } from "react-icons/fa";
 import { FaHotel } from "react-icons/fa6";
@@ -9,8 +9,33 @@ import { FaTrainSubway } from "react-icons/fa6";
 import { FaBus } from "react-icons/fa";
 import { RiFlightTakeoffLine } from "react-icons/ri";
 import { SiMentorcruise } from "react-icons/si";
+import jsPDF from 'jspdf';
 
 function Maincomponent() {
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+
+    // Add title and text
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("Travel Booking Details", 20, 20);
+
+    // Add details
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.text("Leaving From: [Selected Leaving Location]", 20, 40);
+    doc.text("Destination: [Selected Destination]", 20, 50);
+    doc.text("Theme: [Selected Theme]", 20, 60);
+    doc.text("From: [Start Date]", 20, 70);
+    doc.text("To: [End Date]", 20, 80);
+    doc.text("Travelers: [Number of Travelers]", 20, 90);
+
+    // Save the PDF
+    doc.save("TravelBookingDetails.pdf");
+  };
+
+  const navigate = useNavigate()
   return (
     <div> 
        
@@ -21,63 +46,77 @@ function Maincomponent() {
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}>
-            <div className='flex justify-start items-start mb-32 mr-72 ml-0 mt-0 pt-0'>
-            <header className=" mb-12 mr-72 ">
-                <div>
-             <ul className="hidden md:flex space-x-8 ">
-             <li>
-                                <NavLink
-                                to="/"
-                                className="text-white bold text-lg hover:text-blue-950 font-serif">
-                                    Horizon
-                                </NavLink>
-                                </li>
-                                <li>
-                                <NavLink
-                                to="/"
-                                className="text-white hover:text-blue-950 font-serif">
-                                   Destinations
-                                </NavLink>
-                                </li>
-                                <li>
-                                <NavLink
-                                to="/"
-                                className="text-white hover:text-blue-950 font-serif ">
-                                    Packages
-                                </NavLink>
-                                </li>
-                                <li>
-                                <NavLink
-                                to="/"
-                                className="text-white hover:text-blue-950 font-serif">
-                                    Home
-                                </NavLink>
-                                </li>
-                                <li>
-                                <NavLink
-                                to="/"
-                                className="text-white hover:text-blue-950 font-serif">
-                                   About us
-                                </NavLink>
-                                </li>
-                                <li>
-                                <NavLink
-                                to="/"
-                                className="text-white hover:text-blue-950 font-serif">
-                                Review and Ratings
-                                </NavLink>
-                                </li>
-             </ul>
-             
-             </div> 
+            <div className='flex justify-around items-end mb-32  ml-0 mt-0 pt-0'>
+  <header className="mb-12 mr-80 flex justify-between items-center w-full">
+    {/* Navigation Links */}
+    <div>
+      <ul className="hidden md:flex space-x-8">
+        <li>
+          <NavLink
+            to="/"
+            className="text-white bold text-lg hover:text-blue-950 font-serif"
+          >
+            Horizon
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="text-white hover:text-blue-950 font-serif"
+          >
+            Destinations
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="text-white hover:text-blue-950 font-serif "
+          >
+            Packages
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="text-white hover:text-blue-950 font-serif"
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="text-white hover:text-blue-950 font-serif"
+          >
+            About us
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="text-white hover:text-blue-950 font-serif"
+          >
+            Review and Ratings
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+
+    {/* Generate PDF Button */}
+    <div className='ml-72'>
+      <button
+        onClick={generatePDF}
+        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 "
+      >
+        Generate PDF
+      </button>
+    </div>
+  </header>
+</div>
+
 
             
-           
-            </header>
-        
-            </div>
-            
-            <div className="text-center mt-6">
+            <div className="text-center mt-5 mb-5">
             <p className="text-lg md:text-xl font-medium text-white tracking-widest ">
              One Adventure At A Time
                </p>
@@ -85,7 +124,7 @@ function Maincomponent() {
                   DISCOVER
                 </h1>
             </div>
-           <div className=''>
+           <div className='mb-4'>
            <div className="flex gap-2 mt-6">
   <button className="flex items-center justify-center px-2 py-2  font-medium rounded-md shadow text-white hover:text-gray-100 bg-blue-300 m -0">
     <span className="mr-1">
@@ -111,13 +150,17 @@ function Maincomponent() {
     </span>
     Activities
   </button>
-  <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
+  <button
+  onClick={()=>navigate("/traincomponent")}
+  className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
       <FaTrainSubway  className="w-4 h-5" />
     </span>
     Trains
   </button>
-  <button className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
+  <button 
+  onClick={()=>navigate("/buscomponent")}
+  className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
       <FaBus  className="w-5 h-5" />
     </span>
@@ -200,7 +243,7 @@ function Maincomponent() {
  
 </div>
  {/* Add Flight Button */}
- <div className="flex justify-start w-full mt-2">
+ <div className="flex justify-start w-full mt-2 mb-4">
     <button className="bg-gray-500 text-white font-medium py-2 px-4 rounded-md shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">
       Add a Flight
     </button>
