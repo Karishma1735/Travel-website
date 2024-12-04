@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoSwapHorizontalSharp } from "react-icons/io5";
 import jsPDF from "jspdf";
 import busimg from "./busimg.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Buscomponent() {
   const [departure, setDeparture] = useState("");
@@ -11,8 +12,10 @@ function Buscomponent() {
   const [departureSuggestions,setDepartureSuggestions] = useState('')
   const [destinationSuggestions,setDestinationSuggestions] = useState("")
 
+  const navigate = useNavigate()
+
   const busData = [
-    { id: 1, departure: "Mumbai", destination: "Indore", date: "2024-12-05", time: "10:00 AM", price: "$20" },
+    { id: 1, departure: "Mumbai", destination: "Indore", date: "2024-12-05", time: "10:00 AM", price: "$20"     },
     { id: 2, departure: "Indore", destination: "Mumbai", date: "2024-12-05", time: "1:00 PM", price: "$25" },
     { id: 3, departure: "Indore", destination: "Hyderabad", date: "2024-12-06", time: "3:00 PM", price: "$18" },
     { id: 4, departure: "Hyderabad", destination: "Indore", date: "2024-12-07", time: "9:00 AM", price: "$22" },
@@ -90,7 +93,7 @@ const handleDestinationChange = (value) => {
   :[]
  )
 };
-
+    
 const handleSuggestionClick = (city, field) => {
   if (field === "departure") {
     setDeparture(city);
@@ -274,6 +277,16 @@ const handleSuggestionClick = (city, field) => {
               <p className="text-center text-gray-600">No buses found.</p>
             )}
           </div>
+          <div className="mt-6 text-center">
+  {results.length > 0 && (
+    <button
+      className="bg-blue-500 text-white px-8 py-2 rounded-md text-lg hover:bg-blue-400"
+      onClick={()=>navigate("/travellerdetails")} 
+    >
+      Book Ticket
+    </button>
+  )}
+</div>
         </div>
       </div>
     </div>
