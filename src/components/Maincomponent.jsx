@@ -13,6 +13,15 @@ import jsPDF from 'jspdf';
 
 function Maincomponent() {
 
+  // const [formData, setFormData] = useState({
+  //   leavingFrom: '',
+  //   destination: '',
+  //   theme: '',
+  //   fromDate: '',
+  //   toDate: '',
+  //   travelers: ''
+  // });
+
   const generatePDF = () => {
     const doc = new jsPDF();
 
@@ -154,7 +163,7 @@ function Maincomponent() {
   onClick={()=>navigate("/traincomponent")}
   className="flex items-center justify-center px-2 py-2 bg-black opacity-55 text-white font-medium rounded-md shadow hover:bg-gray-100 mx-0">
     <span className="mr-1">
-      <FaTrainSubway  className="w-4 h-5" />
+      <FaTrainSubway  className="w-4 h-5" /> 
     </span>
     Trains
   </button>
